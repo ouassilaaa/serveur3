@@ -20,10 +20,18 @@ class WebServer(private val pointDao: PointDao) {
 
     //http://localhost:8080/getPoints
     @GetMapping("/getPoints")
-    fun getPoints (): List<PointBean> {
+    fun getPoints ( response : HttpServletResponse): Any {
         println("/getPoints ")
-        //chercher en base la liste des points
-        return pointDao.findAll()
+        try {
+            //chercher en base la liste des points
+            return pointDao.findAll()
+        }
+        catch (e:Exception){
+            e.printStackTrace()
+            response.status = 518
+            return ErrorBean("Erreur : " + e.message)
+
+        }
     }
 
     //http://localhost:8080/setPoints
