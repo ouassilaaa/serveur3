@@ -56,14 +56,6 @@ class WebServer(private val pointDao: PointDao) {
         }
     }
 
-  /*  @GetMapping("/testUser")
-    fun testUser(): String {
-        println("/testUser")
-        val user = UserBean(0)
-        userDao.save(user)
-        return "ok"
-    }*/
-
 
     }
 
